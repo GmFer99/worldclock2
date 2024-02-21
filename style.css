@@ -1,45 +1,61 @@
-body, html {
+/* Reset básico para remover estilos padrão do navegador */
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #e0e0e0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
     text-align: center;
+    color: #333;
+    padding: 20px;
 }
 
 #clocks {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
 }
 
 .clock {
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 350px;
-    padding: 25px;
-    color: #444444;
-    border: 2px solid #dddddd;
+    background-color: #ffffff3d;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.clock:hover {
+    transform: translateY(-5px);
 }
 
 .clock h2 {
-    color: #2a9d8f; /* Teal color */
     margin-bottom: 15px;
+    color: #007bff; /* Cor azul para os títulos */
+}
+
+.clock button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.clock button:hover {
+    background-color: #0056b3;
 }
 
 .clock p {
-    font-size: 28px;
-    color: #264653; /* Dark blue color */
-    margin: 0;
-    font-weight: bold;
+    font-size: 24px;
+    color: #666;
 }
 
-body {
-    background-color: #0000ff80; /* Sandy brown background */
-}
 
 
 

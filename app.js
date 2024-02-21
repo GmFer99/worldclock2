@@ -1,20 +1,34 @@
-function setupClocks() {
-    // Configura os eventos de clique para cada botão
-    document.getElementById('btn-brasilia').addEventListener('click', () => startUpdatingTime('America/Sao_Paulo', 'time-brasilia'));
-    document.getElementById('btn-washington').addEventListener('click', () => startUpdatingTime('America/New_York', 'time-washington'));
-    document.getElementById('btn-beijing').addEventListener('click', () => startUpdatingTime('Asia/Shanghai', 'time-beijing'));
+let intervals = {}; // Armazena os intervalos de atualização para cada relógio
+
+document.addEventListener('DOMContentLoaded', function() {
+    setupButton('btn-brasilia', 'America/Sao_Paulo', 'time-brasilia');
+    setupButton('btn-washington', 'America/New_York', 'time-washington');
+    setupButton('btn-beijing', 'Asia/Shanghai', 'time-beijing');
+});
+
+function setupButton(buttonId, zone, elementId) {
+    document.getElementById(buttonId).addEventListener('click', () => {
+        toggleTime(zone, elementId);
+    });
 }
 
-function startUpdatingTime(zone, elementId) {
-    // Atualiza a hora imediatamente
-    fetchTime(zone, elementId);
-    // Inicia um intervalo para atualizar a hora a cada segundo
-    setInterval(() => {
-        fetchTime(zone, elementId);
-    }, 1000);
+function toggleTime(zone, elementId) {
+    const element = document.getElementById(elementId);
+    if (intervals[elementId]) {
+        // Se já existe um intervalo, limpe-o e remova o texto.
+        clearInterval(intervals[elementId]);
+        delete intervals[elementId];
+        element.textContent = '';
+    } else {
+        // Busca e exibe a hora imediatamente, depois começa a atualizar a cada segundo.
+        fetchAndUpdateTime(zone, elementId);
+        intervals[elementId] = setInterval(() => {
+            fetchAndUpdateTime(zone, elementId);
+        }, 1000);
+    }
 }
 
-function fetchTime(zone, elementId) {
+function fetchAndUpdateTime(zone, elementId) {
     fetch(`https://worldtimeapi.org/api/timezone/${zone}`)
         .then(response => response.json())
         .then(data => {
@@ -31,7 +45,6 @@ function formatTime(datetime) {
     return date.toLocaleTimeString();
 }
 
-// Quando o conteúdo da página estiver carregado, configura os relógios
-document.addEventListener('DOMContentLoaded', setupClocks);
+
 
 

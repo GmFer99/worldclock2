@@ -1,4 +1,4 @@
-let intervals = {}; // Armazena os intervalos de atualização para cada relógio
+let intervals = {}; 
 
 document.addEventListener('DOMContentLoaded', function() {
     setupButton('btn-brasilia', 'America/Sao_Paulo', 'time-brasilia');

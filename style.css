@@ -1,4 +1,4 @@
-/* Reset básico para remover estilos padrão do navegador */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,38 +7,45 @@
 
 body, html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #83a4d4; /* Cor de fundo suave azul */
     text-align: center;
     color: #333;
-    padding: 20px;
+    padding: 40px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #clocks {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    justify-content: center;
+    width: 100%;
+    max-width: 960px;
 }
 
 .clock {
-    background-color: #ffffff3d;
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    overflow: hidden; /* Garante que tudo fique dentro dos limites arredondados */
 }
 
 .clock:hover {
     transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
 }
 
 .clock h2 {
     margin-bottom: 15px;
-    color: #007bff; /* Cor azul para os títulos */
+    color: #2a9d8f; /* Cor verde-água para os títulos */
 }
 
 .clock button {
-    background-color: #007bff;
+    background-color: #2a9d8f; /* Correspondendo à cor do título */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -48,14 +55,11 @@ body, html {
 }
 
 .clock button:hover {
-    background-color: #0056b3;
+    background-color: #1b6f5c; /* Um tom mais escuro para o hover */
 }
 
 .clock p {
     font-size: 24px;
     color: #666;
+    margin: 0; /* Remove margens padrão para alinhamento adequado */
 }
-
-
-
-
